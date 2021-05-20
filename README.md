@@ -25,16 +25,16 @@ Things you may want to cover:
 
 ## usersテーブル
 
-| Column             | Type     | Options                |
-| ------------------ | -------- | -----------------------|
-| nickname           | string   | null: false            |
-| email              | string   | unique: true           |
-| encrypted_password | string   | null: false            |
-| family_name        | string   | null: false            |
-| first_name         | string   | null: false            |
-| family_name_k      | string   | null: false            |
-| first_name_k       | string   | null: false            |
-| birth_day          | date     | null: false            |
+| Column             | Type     | Options                  |
+| ------------------ | -------- | ------------------------ |
+| nickname           | string   | null: false              |  
+| email              | string   | null: false, unique: true|
+| encrypted_password | string   | null: false              |
+| family_name        | string   | null: false              |
+| first_name         | string   | null: false              |
+| family_name_k      | string   | null: false              |
+| first_name_k       | string   | null: false              |
+| birth_day          | date     | null: false              |
 
 has_many :items, dependent: :destroy
 has_many :purchases, dependent: :destroy
@@ -57,7 +57,7 @@ has_many :purchases, dependent: :destroy
 
 belongs_to :user
 has_one :purchase
-has_one_attached :images
+has_one_attached :image
 
 ## purchasesテーブル
 
