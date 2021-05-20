@@ -36,8 +36,8 @@ Things you may want to cover:
 | first_name_k       | string   | null: false              |
 | birth_day          | date     | null: false              |
 
-has_many :items, dependent: :destroy
-has_many :purchases, dependent: :destroy
+has_many :items
+has_many :purchases
 
 
 
@@ -51,7 +51,7 @@ has_many :purchases, dependent: :destroy
 | category_id        | integer    | null: false            |
 | condition_id       | integer    | null: false            |
 | shipping_burden_id | integer    | null: false            |
-| place_id           | integer    | null: false            |
+| prefecture_id      | integer    | null: false            |
 | shipping_date_id   | integer    | null: false            |
 | user               | references | foreign_key: true      |
 
