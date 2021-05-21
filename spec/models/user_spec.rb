@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     before do
       @user = FactoryBot.build(:user)
     end
-
+    
     describe 'ユーザー情報登録' do
       context "ユーザー情報が登録できるとき" do
         it 'nickname, email, password, password_confirmation, family_name, first_name, family_name_k, first_name_k, birth_dayが存在すれば登録できること ' do
