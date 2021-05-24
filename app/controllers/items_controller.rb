@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
-before_action :move_to_login, only: [:new, :create]
+  before_action :move_to_login, only: [:new, :create]
+  before_action :authenticate_user! only:[:new, :create]
 
   def index
+    @items = Item.all
   end
 
   def new
@@ -10,6 +12,11 @@ before_action :move_to_login, only: [:new, :create]
 
   def create
     @item = Item.create(item_params)
+    if @item.save
+      redirect_to new_item_path
+    else
+      render :new
+    end
   end
 
 
@@ -20,10 +27,12 @@ before_action :move_to_login, only: [:new, :create]
   end
   
   private
+
   def item_params
     params.require(:item).permit(
-      :image, :name, :description,:price, :category_id, 
+      :image, :name, :description, :price, :category_id, 
       :condition_id, :shipping_burden_id, :prefecture_id,
       :shipping_date_id).merge(user_id: current_user.id)
-    end
+  end
+  
 end
