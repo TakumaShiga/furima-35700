@@ -87,6 +87,18 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Price は半角数字で入力してください")
         end
 
+        it 'priceが半角英語の場合出品できないこと' do
+          @item.price = "abcde"
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price は半角数字で入力してください")
+        end
+
+        it 'priceが全角英数混合の場合出品できないこと' do
+          @item.price = "123abc"
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price は半角数字で入力してください")
+        end
+
         it 'priceが300円未満の場合出品できないこと' do
           @item.price = 299
           @item.valid?
