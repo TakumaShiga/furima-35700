@@ -42,16 +42,17 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  def move_to_index
-    unless current_user.id == @item.user_id
-      redirect_to action: :index
-    end
-  end
-
+  
   private
 
   def item_params_id
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index
+    unless current_user.id == @item.user_id
+      redirect_to action: :index
+    end
   end
 
   def item_params
