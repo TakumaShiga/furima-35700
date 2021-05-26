@@ -145,17 +145,19 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
+
             <span><%= item.price %>円<br><%= item.shipping_burden.name %></span>
+
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
             </div>
           </div>
         </div>
+
         <% end %>
       </li>
       <% end %>
-
       <% unless @items.present? %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -174,6 +176,7 @@
         </div>
         <% end %>
       </li>
+
       <% end %>
     </ul>
   </div>
