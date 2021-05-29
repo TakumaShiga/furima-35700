@@ -85,7 +85,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが空だと保存できないこと' do
         @purchase_address.phone_number = ""
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁以内の半角数字で入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
       it 'phone_numberは12桁以上の半角数字だと保存できないこと' do
