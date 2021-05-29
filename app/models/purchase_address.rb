@@ -11,8 +11,8 @@ class PurchaseAddress
    validates :token
   end
     validates :prefecture_id, numericality: {other_than: 1, message: "を選択してください"}
-    validates :phone_number, numericality: {with: /\A\d{11}\z/, message: "は11桁の半角数字で入力してください"}
-    validates :phone_number, length: { is: 11 }
+    validates :phone_number, numericality: {with: /\A\d{11}\z/, message: "は11桁以内の半角数字で入力してください"}
+    validates :phone_number, length: { maximum: 11 }
   
 
   def save
