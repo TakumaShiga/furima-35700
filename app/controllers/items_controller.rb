@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
   before_action :item_params_id, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
-  before_action :prohibit_access_purchase, only:[:edit, :update]
+  before_action :prohibit_access_purchase, only:[:edit, :update, :destroy]
   
 
   def index
