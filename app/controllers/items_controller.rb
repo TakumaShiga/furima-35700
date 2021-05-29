@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   end
 
  def prohibit_access_purchase
-    if current_user.id == @item.purchase.user_id 
+    if @item.purchase.present?
       redirect_to action: :index
     end 
  end
