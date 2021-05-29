@@ -85,43 +85,37 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが空だと保存できないこと' do
         @purchase_address.phone_number = ""
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁の半角数字で入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁以内の半角数字で入力してください")
       end
 
       it 'phone_numberは12桁以上の半角数字だと保存できないこと' do
         @purchase_address.phone_number = "123456789012"
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
-      end
-
-      it 'phone_numberは11桁未満の半角数字だと保存できないこと' do
-        @purchase_address.phone_number = "1234567890"
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
+        expect(@purchase_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
 
       it 'phone_numberは半角英字だと保存できないこと' do
         @purchase_address.phone_number = "abcdefghijk"
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁の半角数字で入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁以内の半角数字で入力してください")
       end
 
       it 'phone_numberは全角数字だと保存できないこと' do
         @purchase_address.phone_number = "１２３４５６７８９０１"
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁の半角数字で入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁以内の半角数字で入力してください")
       end
 
       it 'phone_numberは全角ひらがなだと保存できないこと' do
         @purchase_address.phone_number = "あいうえおかきくけこさ"
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁の半角数字で入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁以内の半角数字で入力してください")
       end
 
       it 'phone_numberは全角カタカナだと保存できないこと' do
         @purchase_address.phone_number = "アイウエオカキクケコサ"
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁の半角数字で入力してください")
+        expect(@purchase_address.errors.full_messages).to include("Phone number は11桁以内の半角数字で入力してください")
       end
 
       it 'itemと紐づいていないと保存できないこと' do
