@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
   before_action :item_params_id, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :prohibit_access_purchase, only:[:edit, :update]
   
 
   def index
@@ -54,6 +55,12 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
+
+ def prohibit_access_purchase
+    if current_user.id == @item.purchase.user_id 
+      redirect_to action: :index
+    end 
+ end
 
   def item_params
     params.require(:item).permit(:image,:name,:description,:price,:category_id,:condition_id,:shipping_burden_id,:prefecture_id,:shipping_date_id).merge(user_id: current_user.id)
